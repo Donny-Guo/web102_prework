@@ -76,7 +76,10 @@ const raisedCard = document.getElementById("total-raised");
 const totalAmountRaised = GAMES_JSON.reduce((total, game) => total + game.pledged, 0);
 
 // set inner HTML using template literal
-raisedCard.innerHTML = `${totalAmountRaised.toLocaleString('en-US')}`;
+raisedCard.innerHTML = `${totalAmountRaised.toLocaleString('en-US', {
+    style: 'currency', currency: "USD",
+    maximumFractionDigits: 0
+})}`;
 
 // grab number of games card and set its inner HTML
 const gamesCard = document.getElementById("num-games");
