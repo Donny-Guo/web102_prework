@@ -145,7 +145,8 @@ const unfundedGamesCount = GAMES_JSON.filter(game => game.pledged < game.goal).l
 
 // create a string that explains the number of unfunded games using the ternary operator
 const displayStr = `A total of ${totalAmountRaised.toLocaleString('en-US', {
-    style: 'currency', currency: "USD", maximumFractionDigits: 0})} 
+    style: 'currency', currency: "USD", maximumFractionDigits: 0
+})} 
     has been raised for ${GAMES_JSON.length} ${GAMES_JSON.length > 1 ? 'games' : 'game'}. 
     Currently, ${unfundedGamesCount} ${unfundedGamesCount > 1 ? 'games remain' : 'game remains'} unfunded. 
     We need your help to fund these amazing games!`;
@@ -167,7 +168,12 @@ const sortedGames = GAMES_JSON.sort((item1, item2) => {
 });
 
 // use destructuring and the spread operator to grab the first and second games
-
+const [firstGame, secondGame, ...others] = sortedGames;
 // create a new element to hold the name of the top pledge game, then append it to the correct element
-
+const firstGameElement = document.createElement('p')
+firstGameElement.innerHTML = `${firstGame.name}`
+firstGameContainer.appendChild(firstGameElement);
 // do the same for the runner up item
+const secondGameElement = document.createElement('p')
+secondGameElement.innerHTML = `${secondGame.name}`
+secondGameContainer.appendChild(secondGameElement);
